@@ -740,7 +740,7 @@ alertmanager:
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
     ##
-    nodePort: 30110
+    nodePort: 30537
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
     ##
@@ -777,7 +777,7 @@ alertmanager:
 
     ## Service type
     ##
-    type: NodePort
+    type: ClusterIP
 
   ## Configuration for creating a separate Service for each statefulset Alertmanager replica
   ##
@@ -1229,6 +1229,13 @@ grafana:
   ## Deploy default dashboards
   ##
   defaultDashboardsEnabled: true
+
+  # === 여기에 'service' 블록을 추가하거나 수정합니다 ===
+  service:
+    type: NodePort  # Grafana 서비스 타입을 NodePort로 설정
+    port: 80        # Grafana Pod가 노출하는 내부 포트 (기본값)
+    nodePort: 30110 # 클러스터 외부에서 접근할 포트 번호 지정 (30000-32767 범위)
+  # ===================================================
 
   ## Deploy GrafanaDashboard CRDs that reference dashboards from ConfigMaps when grafana-operator is used
   ## These settings control how dashboards are integrated with the Grafana Operator
@@ -3554,7 +3561,7 @@ prometheus:
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
     ##
-    nodePort: 30090
+    nodePort: 30120
 
     ## Loadbalancer IP
     ## Only use if service.type is "LoadBalancer"
