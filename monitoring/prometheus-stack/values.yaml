@@ -1230,12 +1230,13 @@ grafana:
   ##
   defaultDashboardsEnabled: true
 
-  # === 여기에 'service' 블록을 추가하거나 수정합니다 ===
+  # Grafana 서비스 설정
   service:
-    type: NodePort  # Grafana 서비스 타입을 NodePort로 설정
-    port: 80        # Grafana Pod가 노출하는 내부 포트 (기본값)
-    nodePort: 30110 # 클러스터 외부에서 접근할 포트 번호 지정 (30000-32767 범위)
-  # ===================================================
+    enabled: true
+    type: NodePort # <-- 이 부분을 NodePort로 변경
+    port: 80       # 클러스터 내부에서 Grafana 서비스가 사용할 포트 (기본 웹 포트)
+    targetPort: 3000 # Grafana 컨테이너 내부의 실제 포트
+    nodePort: 30110 # <-- Grafana에 할당할 NodePort를 여기에 설정합니다. (예: 30110, 사용 가능한 포트인지 확인하세요)
 
   ## Deploy GrafanaDashboard CRDs that reference dashboards from ConfigMaps when grafana-operator is used
   ## These settings control how dashboards are integrated with the Grafana Operator
