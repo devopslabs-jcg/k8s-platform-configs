@@ -1234,7 +1234,7 @@ grafana:
   service:
     enabled: true
     type: NodePort # <-- 이 부분을 NodePort로 변경
-    port: 80       # 클러스터 내부에서 Grafana 서비스가 사용할 포트 (기본 웹 포트)
+    port: 81       # 클러스터 내부에서 Grafana 서비스가 사용할 포트 (기본 웹 포트)
     targetPort: 3000 # Grafana 컨테이너 내부의 실제 포트
     nodePort: 30110 # <-- Grafana에 할당할 NodePort를 여기에 설정합니다. (예: 30110, 사용 가능한 포트인지 확인하세요)
 
