@@ -740,7 +740,7 @@ alertmanager:
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
     ##
-    nodePort: 30903
+    nodePort: 30110
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/concepts/services-networking/service/#external-ips
     ##
@@ -777,7 +777,7 @@ alertmanager:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: NodePort
 
   ## Configuration for creating a separate Service for each statefulset Alertmanager replica
   ##
@@ -2733,7 +2733,7 @@ prometheusOperator:
         ##
         nodePort: 31080
 
-        nodePortTls: 31443
+        nodePortTls: 30120
 
         ## Additional ports to open for Prometheus operator Webhook service
         ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#multi-port-services
@@ -3567,7 +3567,7 @@ prometheus:
 
     ## Service type
     ##
-    type: ClusterIP
+    type: NodePort
 
     ## Additional ports to open for Prometheus service
     ##
