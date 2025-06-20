@@ -3562,7 +3562,7 @@ prometheus:
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
     ##
-    nodePort: 30230
+    nodePort: 30130
 
     ## Loadbalancer IP
     ## Only use if service.type is "LoadBalancer"
