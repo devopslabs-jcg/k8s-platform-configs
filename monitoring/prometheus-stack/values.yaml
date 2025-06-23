@@ -1230,14 +1230,6 @@ grafana:
   ##
   defaultDashboardsEnabled: true
 
-  # Grafana 서비스 설정
-  service:
-    enabled: true
-    type: NodePort # <-- 이 부분을 NodePort로 변경
-    port: 81       # 클러스터 내부에서 Grafana 서비스가 사용할 포트 (기본 웹 포트)
-    targetPort: 3000 # Grafana 컨테이너 내부의 실제 포트~
-    nodePort: 30110 # <-- Grafana에 할당할 NodePort를 여기에 설정합니다. (예: 30110, 사용 가능한 포트인지 확인하세요)
-
   ## Deploy GrafanaDashboard CRDs that reference dashboards from ConfigMaps when grafana-operator is used
   ## These settings control how dashboards are integrated with the Grafana Operator
   ## Note: End user still need to create is own kind: GrafanaDataSource for Prometheus
@@ -1466,6 +1458,11 @@ grafana:
     portName: http-web
     ipFamilies: []
     ipFamilyPolicy: ""
+    enabled: true
+    type: NodePort # <-- 이 부분을 NodePort로 변경
+    port: 81       # 클러스터 내부에서 Grafana 서비스가 사용할 포트 (기본 웹 포트)
+    targetPort: 3000 # Grafana 컨테이너 내부의 실제 포트~
+    nodePort: 30110 # <-- Grafana에 할당할 NodePort를 여기에 설정합니다. (예: 30110, 사용 가능한 포트인지 확인하세요)
 
   serviceMonitor:
     # If true, a ServiceMonitor CRD is created for a prometheus operator
@@ -3562,7 +3559,7 @@ prometheus:
     ## Port to expose on each node
     ## Only used if service.type is 'NodePort'
     ##
-    nodePort: 30130
+    nodePort: 30170
 
     ## Loadbalancer IP
     ## Only use if service.type is "LoadBalancer"

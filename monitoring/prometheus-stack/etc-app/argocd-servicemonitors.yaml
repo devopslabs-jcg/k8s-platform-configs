@@ -1,0 +1,51 @@
+# argocd-servicemonitors.yaml
+
+# 1. Argo CD API Server (argocd-server) - 클러스터 내부 ClusterIP를 통해 메트릭 수집
+# Argo CD API Server는 8080 포트에서 UI와 메트릭을 함께 노출합니다.
+# Service의 'http' 포트 이름으로 참조합니다.
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-server-metrics
+  namespace: argocd # Argo CD가 설치된 네임스페이스
+  labels:
+    release: prometheus-stack # kube-prometheus-stack 헬름 차트 사용 시 기본 레이블
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-server # argocd-server Service의 selector와 일치
+      app.kubernetes.io/component: server # argocd-server Service의 추가 label
+  namespaceSelector:
+    matchNames:
+      - argocd
+  endpoints:
+  - port: http # argocd-server Service YAML에서 확인된 'http' 포트 이름
+    path: /metrics # Argo CD 메트릭 기본 경로
+    interval: 30s
+    honorLabels: true
+
+---
+
+# 2. Argo CD Repo Server (argocd-repo-server) - 클러스터 내부 ClusterIP를 통해 메트릭 수집
+# Argo CD Repo Server는 8081 포트에서 메트릭을 노출합니다.
+# Service의 'tcp-repo-server' 포트 이름으로 참조합니다.
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: argocd-repo-server-metrics
+  namespace: argocd
+  labels:
+    release: prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: argocd-repo-server # argocd-repo-server Service의 selector와 일치
+      app.kubernetes.io/component: repo-server # argocd-repo-server Service의 추가 label
+  namespaceSelector:
+    matchNames:
+      - argocd
+  endpoints:
+  - port: tcp-repo-server # argocd-repo-server Service YAML에서 확인된 'tcp-repo-server' 포트 이름
+    path: /metrics # Argo CD 메트릭 기본 경로 (repo-server도 /metrics를 사용)
+    interval: 30s
+    honorLabels: true

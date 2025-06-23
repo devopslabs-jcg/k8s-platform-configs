@@ -1,0 +1,679 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  annotations:
+    argocd.argoproj.io/tracking-id: gitops-app-manager:argoproj.io/Application:argocd/monitoring-stack
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"argoproj.io/v1alpha1","kind":"Application","metadata":{"annotations":{"argocd.argoproj.io/tracking-id":"gitops-app-manager:argoproj.io/Application:argocd/monitoring-stack"},"finalizers":["resources-finalizer.argocd.argoproj.io"],"name":"monitoring-stack","namespace":"argocd"},"spec":{"destination":{"namespace":"monitoring","server":"https://kubernetes.default.svc"},"project":"default","source":{"helm":{"skipCrds":true,"valueFiles":["values.yaml"]},"path":"monitoring/prometheus-stack","repoURL":"https://github.com/devopslabs-jcg/k8s-platform-configs.git","targetRevision":"HEAD"},"syncPolicy":{"automated":{"prune":true,"selfHeal":true},"syncOptions":["CreateNamespace=true","ServerSideApply=true","ApplyOutOfSyncOnly=true"]}}}
+  creationTimestamp: "2025-06-19T04:31:35Z"
+  deletionGracePeriodSeconds: 0
+  deletionTimestamp: "2025-06-20T10:53:49Z"
+    #  finalizers:
+    #  - resources-finalizer.argocd.argoproj.io
+  generation: 350
+  name: monitoring-stack
+  namespace: argocd
+  resourceVersion: "164687"
+  uid: 4412efaa-e047-4a85-baa3-0392f43194f3
+operation:
+  initiatedBy:
+    automated: true
+  retry:
+    limit: 5
+  sync:
+    prune: true
+    revision: b37ce5915aecca1857766ca60e6a924c83851ce8
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
+spec:
+  destination:
+    namespace: monitoring
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      skipCrds: true
+      valueFiles:
+      - values.yaml
+    path: monitoring/prometheus-stack
+    repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
+    - ApplyOutOfSyncOnly=true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-06-20T09:34:31Z"
+    status: Missing
+  history:
+  - deployStartedAt: "2025-06-19T15:18:07Z"
+    deployedAt: "2025-06-19T16:02:54Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: e904a5c827464d25e1f32f76a0b03a71ebc5c0f1
+    source:
+      helm:
+        skipCrds: true
+        valueFiles:
+        - values.yaml
+      path: monitoring/prometheus-stack
+      repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+      targetRevision: HEAD
+  - deployStartedAt: "2025-06-19T16:02:56Z"
+    deployedAt: "2025-06-19T16:03:16Z"
+    id: 1
+    initiatedBy:
+      automated: true
+    revision: 44484f39fe1490da12e0708dc028bef1effbcd6b
+    source:
+      helm:
+        skipCrds: true
+        valueFiles:
+        - values.yaml
+      path: monitoring/prometheus-stack
+      repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+      targetRevision: HEAD
+  - deployStartedAt: "2025-06-19T16:49:14Z"
+    deployedAt: "2025-06-19T16:49:37Z"
+    id: 2
+    initiatedBy:
+      username: admin
+    revision: 44484f39fe1490da12e0708dc028bef1effbcd6b
+    source:
+      helm:
+        skipCrds: true
+        valueFiles:
+        - values.yaml
+      path: monitoring/prometheus-stack
+      repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+      targetRevision: HEAD
+  - deployStartedAt: "2025-06-19T16:58:32Z"
+    deployedAt: "2025-06-19T16:58:54Z"
+    id: 3
+    initiatedBy:
+      username: admin
+    revision: caef3d5ee473d41da2fdd8f90ff78f58b91dc6b1
+    source:
+      helm:
+        skipCrds: true
+        valueFiles:
+        - values.yaml
+      path: monitoring/prometheus-stack
+      repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+      targetRevision: HEAD
+  - deployStartedAt: "2025-06-19T17:12:16Z"
+    deployedAt: "2025-06-19T17:12:49Z"
+    id: 4
+    initiatedBy:
+      username: admin
+    revision: cdc2026cfcfc80acd8c4030b19b47c4394caef3d
+    source:
+      helm:
+        skipCrds: true
+        valueFiles:
+        - values.yaml
+      path: monitoring/prometheus-stack
+      repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+      targetRevision: HEAD
+  operationState:
+    message: waiting for deletion of rbac.authorization.k8s.io/RoleBinding/monitoring-stack-kube-prom-admission
+      and 1 more hooks
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        prune: true
+        revision: b37ce5915aecca1857766ca60e6a924c83851ce8
+        syncOptions:
+        - CreateNamespace=true
+        - ServerSideApply=true
+        - ApplyOutOfSyncOnly=true
+    phase: Running
+    startedAt: "2025-06-20T09:58:11Z"
+    syncResult:
+      revision: b37ce5915aecca1857766ca60e6a924c83851ce8
+      source:
+        helm:
+          skipCrds: true
+          valueFiles:
+          - values.yaml
+        path: monitoring/prometheus-stack
+        repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+        targetRevision: HEAD
+  reconciledAt: "2025-06-20T11:11:39Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: ConfigMap
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ConfigMap
+    name: monitoring-stack-grafana-config-dashboards
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Secret
+    name: alertmanager-monitoring-stack-kube-prom-alertmanager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Secret
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-coredns
+    namespace: kube-system
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-kube-controller-manager
+    namespace: kube-system
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-kube-etcd
+    namespace: kube-system
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-kube-proxy
+    namespace: kube-system
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-kube-scheduler
+    namespace: kube-system
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-alertmanager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-operator
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-prom-prometheus
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-kube-state-metrics
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: Service
+    name: monitoring-stack-prometheus-node-exporter
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-kube-prom-alertmanager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-kube-prom-operator
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-kube-prom-prometheus
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-kube-state-metrics
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - kind: ServiceAccount
+    name: monitoring-stack-prometheus-node-exporter
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: admissionregistration.k8s.io
+    kind: MutatingWebhookConfiguration
+    name: monitoring-stack-kube-prom-admission
+    status: OutOfSync
+    version: v1
+  - group: admissionregistration.k8s.io
+    kind: ValidatingWebhookConfiguration
+    name: monitoring-stack-kube-prom-admission
+    status: OutOfSync
+    version: v1
+  - group: apps
+    kind: DaemonSet
+    name: monitoring-stack-prometheus-node-exporter
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: monitoring-stack-kube-prom-operator
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: monitoring-stack-kube-state-metrics
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: batch
+    hook: true
+    kind: Job
+    name: monitoring-stack-kube-prom-admission-create
+    namespace: monitoring
+    requiresPruning: true
+    version: v1
+  - group: monitoring.coreos.com
+    kind: Alertmanager
+    name: monitoring-stack-kube-prom-alertmanager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: Prometheus
+    name: monitoring-stack-kube-prom-prometheus
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-alertmanager.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-config-reloaders
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-etcd
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-general.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-cpu-usage-second
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-memory-cache
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-memory-rss
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-memory-swap
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-memory-working-s
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.container-resource
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-k8s.rules.pod-owner
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-apiserver-availability.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-apiserver-burnrate.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-apiserver-histogram.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-apiserver-slos
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-prometheus-general.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-prometheus-node-recording.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-scheduler.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kube-state-metrics
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubelet.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-apps
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-resources
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-storage
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system-apiserver
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system-controller-manager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system-kube-proxy
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system-kubelet
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-kubernetes-system-scheduler
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-node-exporter
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-node-exporter.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-node-network
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-node.rules
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-prometheus
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: PrometheusRule
+    name: monitoring-stack-kube-prom-prometheus-operator
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-alertmanager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-apiserver
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-coredns
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-kube-controller-manager
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-kube-etcd
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-kube-proxy
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-kube-scheduler
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-kubelet
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-operator
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-prom-prometheus
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-kube-state-metrics
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: monitoring.coreos.com
+    kind: ServiceMonitor
+    name: monitoring-stack-prometheus-node-exporter
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: monitoring-stack-grafana-clusterrole
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: monitoring-stack-kube-prom-operator
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: monitoring-stack-kube-prom-prometheus
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: monitoring-stack-kube-state-metrics
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: monitoring-stack-grafana-clusterrolebinding
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: monitoring-stack-kube-prom-operator
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: monitoring-stack-kube-prom-prometheus
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: monitoring-stack-kube-state-metrics
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: monitoring-stack-grafana
+    namespace: monitoring
+    status: OutOfSync
+    version: v1
+  - group: rbac.authorization.k8s.io
+    hook: true
+    kind: RoleBinding
+    name: monitoring-stack-kube-prom-admission
+    namespace: monitoring
+    requiresPruning: true
+    version: v1
+  sourceHydrator: {}
+  sourceType: Helm
+  summary: {}
+  sync:
+    comparedTo:
+      destination:
+        namespace: monitoring
+        server: https://kubernetes.default.svc
+      source:
+        helm:
+          skipCrds: true
+          valueFiles:
+          - values.yaml
+        path: monitoring/prometheus-stack
+        repoURL: https://github.com/devopslabs-jcg/k8s-platform-configs.git
+        targetRevision: HEAD
+    revision: 755a0c09815ceae3b82ed270b0a3870ca364c0d2
+    status: OutOfSync
